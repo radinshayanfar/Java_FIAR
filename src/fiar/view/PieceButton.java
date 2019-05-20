@@ -1,14 +1,16 @@
 package fiar.view;
 
 import fiar.model.Position;
-import fiar.model.Turn;
 
 import javax.swing.*;
 import java.awt.*;
 
 public class PieceButton extends JButton {
-    private Color color = Color.LIGHT_GRAY;
+    public static final Color DEFAULT_COLOR = Color.LIGHT_GRAY;
+
+    private Color color = DEFAULT_COLOR;
     private Position position;
+    private boolean submitted = false;
 
     public PieceButton(Position position) {
         super();
@@ -26,5 +28,13 @@ public class PieceButton extends JButton {
 
     public Position getPosition() {
         return position;
+    }
+
+    public boolean isSubmitted() {
+        return submitted;
+    }
+
+    public void submit() {
+        this.submitted = true;
     }
 }

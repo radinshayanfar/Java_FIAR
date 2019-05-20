@@ -34,11 +34,14 @@ public class Board {
         int lowest = getLowestByColumn(column);
         if (lowest != -1) {
             cells[column][lowest] = turnToCell(turn);
-            turn = turn.opposite();
             turnsPlayed++;
             return true;
         }
         return false;
+    }
+
+    public void changeTurn() {
+        turn = turn.opposite();
     }
 
     public boolean hasWon() {
@@ -67,5 +70,9 @@ public class Board {
 
     private static Cell turnToCell(Turn turn) {
         return turn == Turn.RED ? Cell.RED : Cell.BLUE;
+    }
+
+    public Turn getTurn() {
+        return turn;
     }
 }

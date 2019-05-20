@@ -6,8 +6,6 @@ import fiar.model.Turn;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
 public class BoardView {
     public static final int XSIZE = 7, YSIZE = 6;
@@ -25,16 +23,12 @@ public class BoardView {
 //        boardPanel.setLocation(0, 0);
 
         buttons = new PieceButton[XSIZE][YSIZE];
-        for (int i = 0; i < XSIZE; i++) {
-            for (int j = 0; j < YSIZE; j++) {
+        for (int j = 0; j < YSIZE; j++) {
+            for (int i = 0; i < XSIZE; i++) {
                 buttons[i][j] = new PieceButton(new Position(i, j));
-                buttons[i][j].addActionListener(new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        System.out.println("TEST");
-                    }
-                });
-                boardPanel.add(buttons[i][j], j, i);
+                buttons[i][j].addActionListener(controller);
+                buttons[i][j].addMouseListener(controller);
+                boardPanel.add(buttons[i][j]);
             }
         }
 
@@ -58,7 +52,7 @@ public class BoardView {
         frame.setLayout(new BorderLayout());
         frame.setSize(new Dimension(700, 650));
         frame.setLocation((int) (Toolkit.getDefaultToolkit().getScreenSize().width / 2 - frame.getSize().getWidth() / 2)
-                            , (int) (Toolkit.getDefaultToolkit().getScreenSize().height / 2 - frame.getSize().getHeight() / 2));
+                , (int) (Toolkit.getDefaultToolkit().getScreenSize().height / 2 - frame.getSize().getHeight() / 2));
 
         frame.add(boardPanel, BorderLayout.CENTER);
         frame.add(turnPanel, BorderLayout.SOUTH);
@@ -66,13 +60,16 @@ public class BoardView {
         frame.setVisible(true);
     }
 
-    public BoardView() {
+    public BoardView(BoardController controller) {
+        this.controller = controller;
+
         initTurn();
         initBoard();
         initFrame();
+
     }
 
-    public void setController(BoardController controller) {
-        this.controller = controller;
+    public PieceButton getPieceButton(Position position) {
+        return buttons[position.getX()][position.getY()];
     }
 }
