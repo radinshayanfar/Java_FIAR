@@ -20,4 +20,8 @@ public enum Turn {
     public Color getColor() {
         return color;
     }
+
+    public Turn opposite() {
+        return this == RED ? BLUE : RED;
+    }
 }
