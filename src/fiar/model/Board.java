@@ -60,7 +60,7 @@ public class Board {
         return false;
     }
 
-    public boolean hasDrawned() {
+    public boolean hasDrawn() {
         return turnsPlayed == BoardView.XSIZE * BoardView.YSIZE;
     }
 

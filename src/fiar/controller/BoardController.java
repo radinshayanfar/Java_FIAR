@@ -5,6 +5,7 @@ import fiar.model.Position;
 import fiar.view.BoardView;
 import fiar.view.PieceButton;
 
+import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -33,6 +34,18 @@ public class BoardController implements ActionListener, MouseListener {
                 lowest.submit();
                 lowest.setBackground(board.getTurn().getColor());
                 board.changeTurn();
+                view.updateTurnLabel(board.getTurn());
+
+                if (board.hasWon()) {
+                    JOptionPane.showMessageDialog(null, board.lastPlayedTurn().getText() + " player won!");
+                    System.exit(0);
+                }
+
+                if (board.hasDrawn()) {
+                    JOptionPane.showMessageDialog(null, "Game Drawn!");
+                    System.exit(0);
+                }
+
             }
         }
     }

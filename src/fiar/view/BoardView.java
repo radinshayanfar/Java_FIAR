@@ -60,9 +60,16 @@ public class BoardView {
         frame.setVisible(true);
     }
 
+//    private void setIcon() {
+//        ImageIcon icon = new ImageIcon("assets/icon.png");
+//        frame.setIconImage(icon.getImage());
+//
+//    }
+
     public BoardView(BoardController controller) {
         this.controller = controller;
 
+//        setIcon();
         initTurn();
         initBoard();
         initFrame();
@@ -72,4 +79,9 @@ public class BoardView {
     public PieceButton getPieceButton(Position position) {
         return buttons[position.getX()][position.getY()];
     }
+
+    public void updateTurnLabel(Turn turn) {
+        turnLabel.updateTurn(turn);
+    }
+
 }
