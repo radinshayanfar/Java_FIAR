@@ -1,6 +1,7 @@
 package fiar.view;
 
 import fiar.controller.BoardController;
+import fiar.model.Board;
 import fiar.model.Position;
 import fiar.model.Turn;
 
@@ -8,7 +9,6 @@ import javax.swing.*;
 import java.awt.*;
 
 public class BoardView {
-    public static final int XSIZE = 7, YSIZE = 6;
 
     private JFrame frame;
     private JPanel boardPanel, turnPanel;
@@ -18,13 +18,13 @@ public class BoardView {
     private BoardController controller;
 
     private void initBoard() {
-        boardPanel = new JPanel(new GridLayout(YSIZE, XSIZE));
-        boardPanel.setPreferredSize(new Dimension(XSIZE * 100, YSIZE * 100));
+        boardPanel = new JPanel(new GridLayout(Board.YSIZE, Board.XSIZE));
+        boardPanel.setPreferredSize(new Dimension(Board.XSIZE * 100, Board.YSIZE * 100));
 //        boardPanel.setLocation(0, 0);
 
-        buttons = new PieceButton[XSIZE][YSIZE];
-        for (int j = 0; j < YSIZE; j++) {
-            for (int i = 0; i < XSIZE; i++) {
+        buttons = new PieceButton[Board.XSIZE][Board.YSIZE];
+        for (int j = 0; j < Board.YSIZE; j++) {
+            for (int i = 0; i < Board.XSIZE; i++) {
                 buttons[i][j] = new PieceButton(new Position(i, j));
                 buttons[i][j].addActionListener(controller);
                 buttons[i][j].addMouseListener(controller);

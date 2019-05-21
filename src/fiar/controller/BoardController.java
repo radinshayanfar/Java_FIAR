@@ -6,6 +6,7 @@ import fiar.view.BoardView;
 import fiar.view.PieceButton;
 
 import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -74,7 +75,8 @@ public class BoardController implements ActionListener, MouseListener {
             if (lowestY != -1) {
                 PieceButton lowest = view.getPieceButton(new Position(button.getPosition().getX(), lowestY));
                 lastMouseHoverButton = lowest;
-                lowest.setBackground(board.getTurn().getColor());
+                Color withOpacity = new Color(board.getTurn().getColor().getRed(), board.getTurn().getColor().getGreen(), board.getTurn().getColor().getBlue(), 64);
+                lowest.setBackground(withOpacity);
             }
         }
     }

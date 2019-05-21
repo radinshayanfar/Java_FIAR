@@ -1,17 +1,17 @@
 package fiar.model;
 
-import fiar.view.BoardView;
-
 public class Board {
 
+    public static final int XSIZE = 7;
+    public static final int YSIZE = 6;
     private Cell[][] cells;
     private Turn turn = Turn.RED;
     private int turnsPlayed = 0;
 
     private void buildBoard() {
-        cells = new Cell[BoardView.XSIZE][BoardView.YSIZE];
-        for (int i = 0; i < BoardView.XSIZE; i++) {
-            for (int j = 0; j < BoardView.YSIZE; j++) {
+        cells = new Cell[XSIZE][YSIZE];
+        for (int i = 0; i < XSIZE; i++) {
+            for (int j = 0; j < YSIZE; j++) {
                 cells[i][j] = Cell.EMPTY;
             }
         }
@@ -22,7 +22,7 @@ public class Board {
     }
 
     public int getLowestByColumn(int column) {
-        for (int i = BoardView.YSIZE - 1; i >= 0; i--) {
+        for (int i = YSIZE - 1; i >= 0; i--) {
             if (cells[column][i] == Cell.EMPTY) {
                 return i;
             }
@@ -46,9 +46,9 @@ public class Board {
 
     public boolean hasWon() {
         Cell lastTurn = turnToCell(lastPlayedTurn());
-        int x = BoardView.XSIZE - 3, y = BoardView.YSIZE - 3;
-        for (int i = 0; i < BoardView.XSIZE; i++)
-            for (int j = 0; j < BoardView.YSIZE; j++)
+        int x = XSIZE - 3, y = YSIZE - 3;
+        for (int i = 0; i < XSIZE; i++)
+            for (int j = 0; j < YSIZE; j++)
                 if ((j < y && cells[i][j] == lastTurn && cells[i][j + 1] == lastTurn && cells[i][j + 2] == lastTurn && cells[i][j + 3] == lastTurn)
                         || (i < x && cells[i][j] == lastTurn && cells[i + 1][j] == lastTurn && cells[i + 2][j] == lastTurn && cells[i + 3][j] == lastTurn)
                         || (j < y && i < x && cells[i][j] == lastTurn && cells[i + 1][j + 1] == lastTurn && cells[i + 2][j + 2] == lastTurn
@@ -61,7 +61,7 @@ public class Board {
     }
 
     public boolean hasDrawn() {
-        return turnsPlayed == BoardView.XSIZE * BoardView.YSIZE;
+        return turnsPlayed == XSIZE * YSIZE;
     }
 
     public Turn lastPlayedTurn() {
