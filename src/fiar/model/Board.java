@@ -2,8 +2,8 @@ package fiar.model;
 
 public class Board {
 
-    public static final int XSIZE = 7;
-    public static final int YSIZE = 6;
+    public static final int XSIZE = 7, YSIZE = 6;
+
     private Cell[][] cells;
     private Turn turn = Turn.RED;
     private int turnsPlayed = 0;
