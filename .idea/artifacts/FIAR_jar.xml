@@ -1,0 +1,8 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="FIAR:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/FIAR_jar</output-path>
+    <root id="archive" name="FIAR.jar">
+      <element id="module-output" name="FIAR" />
+    </root>
+  </artifact>
+</component>
