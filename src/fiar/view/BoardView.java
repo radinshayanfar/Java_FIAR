@@ -18,13 +18,12 @@ public class BoardView {
     private BoardController controller;
 
     private void initBoard() {
-        boardPanel = new JPanel(new GridLayout(Board.YSIZE, Board.XSIZE));
-        boardPanel.setPreferredSize(new Dimension(Board.XSIZE * 100, Board.YSIZE * 100));
-//        boardPanel.setLocation(0, 0);
+        boardPanel = new JPanel(new GridLayout(Board.Y_SIZE, Board.X_SIZE));
+        boardPanel.setPreferredSize(new Dimension(Board.X_SIZE * 100, Board.Y_SIZE * 100));
 
-        buttons = new PieceButton[Board.XSIZE][Board.YSIZE];
-        for (int j = 0; j < Board.YSIZE; j++) {
-            for (int i = 0; i < Board.XSIZE; i++) {
+        buttons = new PieceButton[Board.X_SIZE][Board.Y_SIZE];
+        for (int j = 0; j < Board.Y_SIZE; j++) {
+            for (int i = 0; i < Board.X_SIZE; i++) {
                 buttons[i][j] = new PieceButton(new Position(i, j));
                 buttons[i][j].addActionListener(controller);
                 buttons[i][j].addMouseListener(controller);
