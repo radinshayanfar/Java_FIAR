@@ -59,19 +59,19 @@ public class BoardView {
         frame.setVisible(true);
     }
 
-//    private void setIcon() {
-//        ImageIcon icon = new ImageIcon("assets/icon.png");
-//        frame.setIconImage(icon.getImage());
-//
-//    }
+    private void setIcon() {
+        ImageIcon icon = new ImageIcon("./assets/icon.png");
+        frame.setIconImage(icon.getImage());
+
+    }
 
     public BoardView(BoardController controller) {
         this.controller = controller;
 
-//        setIcon();
         initTurn();
         initBoard();
         initFrame();
+        setIcon();
 
     }
 

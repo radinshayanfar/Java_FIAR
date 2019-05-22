@@ -3,6 +3,9 @@
     <output-path>$PROJECT_DIR$/out/artifacts/FIAR_jar</output-path>
     <root id="archive" name="FIAR.jar">
       <element id="module-output" name="FIAR" />
+      <element id="directory" name="assets">
+        <element id="dir-copy" path="$PROJECT_DIR$/assets" />
+      </element>
     </root>
   </artifact>
 </component>
